@@ -104,7 +104,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-white">
       <div className="container mx-auto px-6 py-12">
         <div className="max-w-4xl mx-auto">
           <Header mounted={mounted} />
