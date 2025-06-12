@@ -40,16 +40,34 @@ const FileUploadArea: React.FC<FileUploadAreaProps> = ({
     onDeleteFile(fileNumber);
   };
 
+  const getCardColors = () => {
+    if (fileNumber === 1) {
+      return {
+        uploaded: 'border-emerald-400 bg-gradient-to-br from-emerald-50 to-green-50 shadow-lg shadow-emerald-100/50',
+        dragging: 'border-blue-400 bg-gradient-to-br from-blue-50 to-indigo-50',
+        default: 'border-slate-300 bg-white/80 backdrop-blur-sm hover:border-blue-400 hover:bg-gradient-to-br hover:from-blue-50/50 hover:to-indigo-50/50 hover:shadow-lg hover:shadow-blue-100/30'
+      };
+    } else {
+      return {
+        uploaded: 'border-violet-400 bg-gradient-to-br from-violet-50 to-purple-50 shadow-lg shadow-violet-100/50',
+        dragging: 'border-indigo-400 bg-gradient-to-br from-indigo-50 to-purple-50',
+        default: 'border-slate-300 bg-white/80 backdrop-blur-sm hover:border-indigo-400 hover:bg-gradient-to-br hover:from-indigo-50/50 hover:to-purple-50/50 hover:shadow-lg hover:shadow-indigo-100/30'
+      };
+    }
+  };
+
+  const colors = getCardColors();
+
   return (
     <div className={`transition-all duration-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       <div
         className={`
-          relative border-2 border-dashed rounded-lg p-8 text-center transition-all duration-200 cursor-pointer
+          relative border-2 border-dashed rounded-xl p-8 text-center transition-all duration-300 cursor-pointer
           ${fileState.isUploaded
-            ? 'border-green-400 bg-green-50 shadow-sm'
+            ? colors.uploaded
             : fileState.isDragging
-            ? 'border-gray-500 bg-gray-50'
-            : 'border-gray-300 bg-gray-50 hover:border-gray-400 hover:bg-gray-100'
+            ? colors.dragging
+            : colors.default
           }
         `}
         onDragOver={(e) => onDragOver(e, fileNumber)}
@@ -68,21 +86,23 @@ const FileUploadArea: React.FC<FileUploadAreaProps> = ({
         <div className="space-y-4">
           {fileState.isUploaded ? (
             <>
-              <CheckCircle className="w-12 h-12 text-green-600 mx-auto" />
-              <div className="space-y-2">
-                <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-                <div className="bg-white border border-gray-200 rounded p-3">
-                  <p className="text-gray-700 font-medium text-sm break-all">
+              <div className={`w-16 h-16 rounded-full ${fileNumber === 1 ? 'bg-gradient-to-br from-emerald-400 to-green-500' : 'bg-gradient-to-br from-violet-400 to-purple-500'} flex items-center justify-center mx-auto shadow-lg`}>
+                <CheckCircle className="w-8 h-8 text-white" />
+              </div>
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold text-slate-800">{title}</h3>
+                <div className="bg-white/90 backdrop-blur-sm border border-white/50 rounded-lg p-4 shadow-sm">
+                  <p className="text-slate-700 font-medium text-sm break-all">
                     {fileState.file?.name}
                   </p>
-                  <p className="text-gray-500 text-xs mt-1">
+                  <p className="text-slate-500 text-xs mt-1">
                     {(fileState.file?.size ? (fileState.file.size / 1024).toFixed(1) : '0')} KB
                   </p>
                 </div>
               </div>
               <button
                 onClick={handleDeleteClick}
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 transition-colors duration-200"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-slate-600 bg-white/90 backdrop-blur-sm border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-all duration-200 shadow-sm hover:shadow-md"
               >
                 <X className="w-4 h-4 mr-2" />
                 Remove File
@@ -90,14 +110,16 @@ const FileUploadArea: React.FC<FileUploadAreaProps> = ({
             </>
           ) : (
             <>
-              <FileSpreadsheet className="w-12 h-12 text-gray-400 mx-auto" />
-              <div className="space-y-2">
-                <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-                <p className="text-gray-600 text-sm">{description}</p>
-                <div className="flex items-center justify-center mt-3">
-                  <div className="flex items-center space-x-2 px-4 py-2 bg-gray-100 rounded border">
-                    <Upload className="w-4 h-4 text-gray-600" />
-                    <span className="text-sm font-medium text-gray-700">
+              <div className={`w-16 h-16 rounded-full ${fileNumber === 1 ? 'bg-gradient-to-br from-blue-100 to-indigo-100' : 'bg-gradient-to-br from-indigo-100 to-purple-100'} flex items-center justify-center mx-auto`}>
+                <FileSpreadsheet className={`w-8 h-8 ${fileNumber === 1 ? 'text-blue-600' : 'text-indigo-600'}`} />
+              </div>
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold text-slate-800">{title}</h3>
+                <p className="text-slate-600 text-sm">{description}</p>
+                <div className="flex items-center justify-center mt-4">
+                  <div className={`flex items-center space-x-2 px-4 py-2 ${fileNumber === 1 ? 'bg-gradient-to-r from-blue-100 to-indigo-100' : 'bg-gradient-to-r from-indigo-100 to-purple-100'} rounded-lg border border-white/50 shadow-sm`}>
+                    <Upload className={`w-4 h-4 ${fileNumber === 1 ? 'text-blue-600' : 'text-indigo-600'}`} />
+                    <span className="text-sm font-medium text-slate-700">
                       Drop file here or click to browse
                     </span>
                   </div>
