@@ -104,57 +104,55 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen sky-background">
-      <div className="content-overlay min-h-screen">
-        <div className="container mx-auto px-6 py-12">
-          <div className="max-w-4xl mx-auto">
-            <Header mounted={mounted} />
+    <div className="min-h-screen bg-white">
+      <div className="container mx-auto px-6 py-12">
+        <div className="max-w-4xl mx-auto">
+          <Header mounted={mounted} />
 
-            <div className="grid lg:grid-cols-2 gap-8 mb-10">
-              <FileUploadArea
-                fileState={file1}
-                fileNumber={1}
-                title="ECC Extracted File"
-                description="Upload your ECC extracted Excel file (.xlsx or .xls)"
-                mounted={mounted}
-                fileInputRef={fileInput1Ref}
-                onDragOver={handleDragOver}
-                onDragLeave={handleDragLeave}
-                onDrop={handleDrop}
-                onFileInputChange={handleFileInputChange}
-                onDeleteFile={deleteFile}
-              />
-              <FileUploadArea
-                fileState={file2}
-                fileNumber={2}
-                title="S/4HANA Target File"
-                description="Upload your S/4HANA target Excel file (.xlsx or .xls)"
-                mounted={mounted}
-                fileInputRef={fileInput2Ref}
-                onDragOver={handleDragOver}
-                onDragLeave={handleDragLeave}
-                onDrop={handleDrop}
-                onFileInputChange={handleFileInputChange}
-                onDeleteFile={deleteFile}
-              />
-            </div>
-
-            <ProgressIndicator
-              file1Uploaded={file1.isUploaded}
-              file2Uploaded={file2.isUploaded}
-              isProcessing={isProcessing}
+          <div className="grid lg:grid-cols-2 gap-8 mb-10">
+            <FileUploadArea
+              fileState={file1}
+              fileNumber={1}
+              title="ECC Extracted File"
+              description="Upload your ECC extracted Excel file (.xlsx or .xls)"
               mounted={mounted}
+              fileInputRef={fileInput1Ref}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              onFileInputChange={handleFileInputChange}
+              onDeleteFile={deleteFile}
             />
-
-            <TransformationButton
-              canRun={file1.isUploaded && file2.isUploaded}
-              isProcessing={isProcessing}
+            <FileUploadArea
+              fileState={file2}
+              fileNumber={2}
+              title="S/4HANA Target File"
+              description="Upload your S/4HANA target Excel file (.xlsx or .xls)"
               mounted={mounted}
-              onRun={handleRunTransformation}
+              fileInputRef={fileInput2Ref}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              onFileInputChange={handleFileInputChange}
+              onDeleteFile={deleteFile}
             />
-
-            <Instructions mounted={mounted} />
           </div>
+
+          <ProgressIndicator
+            file1Uploaded={file1.isUploaded}
+            file2Uploaded={file2.isUploaded}
+            isProcessing={isProcessing}
+            mounted={mounted}
+          />
+
+          <TransformationButton
+            canRun={file1.isUploaded && file2.isUploaded}
+            isProcessing={isProcessing}
+            mounted={mounted}
+            onRun={handleRunTransformation}
+          />
+
+          <Instructions mounted={mounted} />
         </div>
       </div>
     </div>

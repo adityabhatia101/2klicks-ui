@@ -44,12 +44,12 @@ const FileUploadArea: React.FC<FileUploadAreaProps> = ({
     <div className={`transition-all duration-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       <div
         className={`
-          relative border-2 border-dashed rounded-lg p-8 text-center transition-all duration-200 cursor-pointer backdrop-blur-sm
+          relative border-2 border-dashed rounded-lg p-8 text-center transition-all duration-200 cursor-pointer
           ${fileState.isUploaded
-            ? 'border-green-400 bg-green-50/80 shadow-sm'
+            ? 'border-green-400 bg-green-50 shadow-sm'
             : fileState.isDragging
-            ? 'border-gray-500 bg-white/60'
-            : 'border-gray-300 bg-white/50 hover:border-gray-400 hover:bg-white/70'
+            ? 'border-gray-500 bg-gray-50'
+            : 'border-gray-300 bg-gray-50 hover:border-gray-400 hover:bg-gray-100'
           }
         `}
         onDragOver={(e) => onDragOver(e, fileNumber)}
@@ -71,7 +71,7 @@ const FileUploadArea: React.FC<FileUploadAreaProps> = ({
               <CheckCircle className="w-12 h-12 text-green-600 mx-auto" />
               <div className="space-y-2">
                 <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-                <div className="bg-white/80 border border-gray-200 rounded p-3 backdrop-blur-sm">
+                <div className="bg-white border border-gray-200 rounded p-3">
                   <p className="text-gray-700 font-medium text-sm break-all">
                     {fileState.file?.name}
                   </p>
@@ -82,7 +82,7 @@ const FileUploadArea: React.FC<FileUploadAreaProps> = ({
               </div>
               <button
                 onClick={handleDeleteClick}
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white/80 border border-gray-300 rounded hover:bg-white/90 transition-colors duration-200 backdrop-blur-sm"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 transition-colors duration-200"
               >
                 <X className="w-4 h-4 mr-2" />
                 Remove File
@@ -95,7 +95,7 @@ const FileUploadArea: React.FC<FileUploadAreaProps> = ({
                 <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
                 <p className="text-gray-600 text-sm">{description}</p>
                 <div className="flex items-center justify-center mt-3">
-                  <div className="flex items-center space-x-2 px-4 py-2 bg-white/60 rounded border backdrop-blur-sm">
+                  <div className="flex items-center space-x-2 px-4 py-2 bg-gray-100 rounded border">
                     <Upload className="w-4 h-4 text-gray-600" />
                     <span className="text-sm font-medium text-gray-700">
                       Drop file here or click to browse
