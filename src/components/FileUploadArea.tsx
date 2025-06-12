@@ -46,7 +46,7 @@ const FileUploadArea: React.FC<FileUploadAreaProps> = ({
         className={`
           relative border-2 border-dashed rounded-lg p-8 text-center transition-all duration-200 cursor-pointer
           ${fileState.isUploaded
-            ? 'border-gray-400 bg-gray-50 shadow-sm'
+            ? 'border-green-400 bg-green-50 shadow-sm'
             : fileState.isDragging
             ? 'border-gray-500 bg-gray-100'
             : 'border-gray-300 bg-white hover:border-gray-400 hover:bg-gray-50'
@@ -68,7 +68,7 @@ const FileUploadArea: React.FC<FileUploadAreaProps> = ({
         <div className="space-y-4">
           {fileState.isUploaded ? (
             <>
-              <CheckCircle className="w-12 h-12 text-gray-600 mx-auto" />
+              <CheckCircle className="w-12 h-12 text-green-600 mx-auto" />
               <div className="space-y-2">
                 <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
                 <div className="bg-white border border-gray-200 rounded p-3">
