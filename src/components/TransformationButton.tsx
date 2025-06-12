@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Play } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 interface TransformationButtonProps {
   canRun: boolean;
@@ -46,14 +46,14 @@ const TransformationButton: React.FC<TransformationButtonProps> = ({
             {/* Normal state content */}
             <div className={`flex items-center transition-opacity duration-300 ${isHovered && !isDisabled ? 'opacity-0' : 'opacity-100'}`}>
               <span className="mr-3">Run Transformation</span>
-              <Play className="w-5 h-5" />
+              <ChevronRight className="w-5 h-5" />
             </div>
 
             {/* Hover state arrows */}
             {!isDisabled && (
               <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
                 {arrows.map((index) => (
-                  <Play
+                  <ChevronRight
                     key={index}
                     className={`w-5 h-5 mx-1 transition-all duration-300 ${
                       isHovered 
