@@ -22,10 +22,10 @@ const TransformationButton: React.FC<TransformationButtonProps> = ({
         onClick={onRun}
         disabled={isDisabled}
         className={`
-          inline-flex items-center px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-200
+          inline-flex items-center px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 transform
           ${isDisabled
             ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            : 'bg-gray-800 text-white hover:bg-gray-900 shadow-sm hover:shadow-md'
+            : 'bg-sky-500 text-white hover:bg-sky-600 hover:scale-105 hover:shadow-lg shadow-md'
           }
         `}
       >
