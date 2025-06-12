@@ -28,7 +28,7 @@ const Instructions: React.FC<InstructionsProps> = ({ mounted }) => {
   ];
 
   return (
-    <div className={`bg-gray-50 rounded-lg p-8 shadow-sm border border-gray-200 transition-all duration-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+    <div className={`bg-white/70 backdrop-blur-sm rounded-lg p-8 shadow-sm border border-gray-200/50 transition-all duration-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">How it works</h2>
       <div className="grid md:grid-cols-3 gap-6 text-sm">
         {steps.map((item) => (
